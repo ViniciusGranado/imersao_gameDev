@@ -1,29 +1,41 @@
-class Personagem {
-    constructor(imagem) {
-        this.imagem = imagem;
-
-        this.frame1 = 0;
-        this.frame2 = 0;
+class Personagem extends Animacao{
+  constructor(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite){
+    super(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite);
+    
+    this.yInicial = height - this.altura;
+    this.y = this.yInicial;
+    
+    this.velocidadeDoPulo = 0;
+    this.gravidade = 3;
+  }
+  
+  pula() {
+    this.velocidadeDoPulo = -30
+  }
+  
+  aplicaGravidade() {
+    this.y = this.y + this.velocidadeDoPulo
+    this.velocidadeDoPulo = this.velocidadeDoPulo + this.gravidade
+    
+    if(this.y > this.yInicial){
+      this.y = this.yInicial
     }
+  }
+  
+  estaColidindo(inimigo) {
+    const precisao = .7
+    const colisao = collideRectRect(
+      this.x, 
+      this.y, 
+      this.largura * precisao, 
+      this.altura * precisao,
+      inimigo.x,
+      inimigo.y,
+      inimigo.largura * precisao,
+      inimigo.altura * precisao
+    );
+    
+    return colisao;
+  }
 
-    exibe() {
-        image(this.imagem, 0, height - alturaPersonagem, larguraPersonagem, alturaPersonagem, this.frame1, this.frame2, 220, 280);
-
-        this.anima()
-    }
-
-    anima() {
-        this.frame1 += 220;
-
-        if (this.frame1 > 660) {
-            this.frame1 = 0;
-            this.frame2 += 270;
-        }
-
-        if (this.frame2 > 810) {
-            this.frame1 = 0;
-            this.frame2= 0;
-        }
-    }
 }
-
