@@ -10,7 +10,7 @@ function setup() {
   jogo.setup();
 
   frameRate(40)
-  // somDoJogo.loop();
+  somDoJogo.loop();
 }
 
 function keyPressed() {

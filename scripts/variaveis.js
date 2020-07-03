@@ -6,6 +6,7 @@ let imagemInimigoVoador;
 let imagemGameOver;
 let imagemTelaInicial;
 let fonteTelaInicial;
+let imagemVida;
 let somDoPulo;
 let jogo;
 
@@ -13,6 +14,8 @@ let cenaAtual = 'telaInicial';
 let cenas;
 let telaInicial;
 let botaoGerenciador;
+let vida;
+let fita;
 
 let cenario;
 let somDoJogo;
